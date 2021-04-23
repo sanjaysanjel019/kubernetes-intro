@@ -48,3 +48,90 @@ Those three processes are:
 - Kubelets
 - Kube-Proxy
 
+
+####  Deploying the build images using Kubernetes
+
+We use `kubectl` to deploy our applications, which is a CL Tool to help you interact with Kubernetes.
+
+```yaml
+kubectl apply -f deployment.yaml
+```
+
+## More commands about K8s
+
+To get the cotainers running on our system:
+
+```jsx
+	kubectl get nodes
+```
+
+Check the status of the cluster:
+
+```jsx
+<cluster-name> status
+```
+
+Similarly to get other infos such as pods, services we can do the following. In this case, we're usig a minikube cluster.
+
+```jsx
+~~ kubectl get pods
+~~ kubectl get services
+```
+
+### Creating Kubernetes Components
+
+To create a new component you simply do `kubectl create`:
+
+
+
+---
+
+### Creating an NGINX deployment
+
+```jsx
+kubectl create deployment nginx-depl --image=nginx
+
+The type is:
+kubectl create deployment <deployment-name> --image=<image_you_want>
+```
+
+### Editing the configuration file of Deployment
+
+```jsx
+kubectl edit deployment <deployment-name>
+eg:
+kubectl edit deployment nginx-depl
+```
+
+### Getting the logs
+
+kubectl logs <pod-name>
+
+—> Getting the description
+
+```jsx
+kubectl describe pod <pod-name>
+```
+
+Get inside the terminal of the pod:
+
+```jsx
+kubectl exec -it <pod-name> -- /bin/bash
+```
+
+## Some other important commads
+
+As we see, if we have to create multiple pods with different images, it will be heft to type all those things on CLI. That's why we use `**kubectl apply**` command.
+
+With this, we make a configuration file and pass it as an argument.
+
+```jsx
+kubectl apply -f [file-name]
+```
+
+ 
+
+**RECAP**
+
+![https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9ed33eed-97d4-477e-ad13-b5f24bb58f45/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210423%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210423T085524Z&X-Amz-Expires=86400&X-Amz-Signature=ef72779e8e866151859cab004b7b1a39a22295910cdf01e0835a81dc7b95f102&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9ed33eed-97d4-477e-ad13-b5f24bb58f45/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210423%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210423T085524Z&X-Amz-Expires=86400&X-Amz-Signature=ef72779e8e866151859cab004b7b1a39a22295910cdf01e0835a81dc7b95f102&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
